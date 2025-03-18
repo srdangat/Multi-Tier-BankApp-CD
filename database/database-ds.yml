@@ -10,6 +10,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: ebs-mysql-pv-claim
+  namespace: webapps
 spec:
   accessModes:
     - ReadWriteOnce
@@ -24,6 +25,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
+  namespace: webapps
 spec:
   selector:
     matchLabels:
@@ -60,6 +62,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql-service
+  namespace: webapps
 spec:
   ports:
     - port: 3306
